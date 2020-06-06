@@ -10,6 +10,7 @@ using MusicStore.Domain.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using MF = MusicStore.CoreFunctions.MongoCollectionFactory;
 
 namespace MusicStore.CoreFunctions
 {
@@ -20,7 +21,7 @@ namespace MusicStore.CoreFunctions
             if (string.IsNullOrEmpty(genreName))
                 throw new ArgumentNullException(nameof(genreName));
 
-            var collection = MongoCollectionFactory.Get<Genre>(Constants.GENRE);
+            var collection = MF.Get<Genre>(Constants.GENRE);
 
             FindOptions<Genre, Genre> opts = new FindOptions<Genre, Genre>()
             {
